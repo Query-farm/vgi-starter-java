@@ -14,7 +14,7 @@ plugins {
     // Fat jar: one file that DuckDB can run with `java -jar`.
     id("com.gradleup.shadow") version "9.6.1"
     // Formatting gate (`make lint` runs spotlessCheck).
-    id("com.diffplug.spotless") version "8.9.0"
+    id("com.diffplug.spotless") version "8.11.0"
 }
 
 group = "farm.query"
@@ -79,14 +79,14 @@ dependencies {
     // DuckDB extension exactly; take them through template updates.
     implementation("farm.query:vgi:0.48.+")
     // JSON parsing for fetch_items (already on the SDK's runtime classpath).
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.21.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.23.0")
     // SLF4J backend: slf4j-simple logs to stderr, never stdout (the protocol channel).
-    runtimeOnly("org.slf4j:slf4j-simple:2.0.17")
+    runtimeOnly("org.slf4j:slf4j-simple:2.0.20")
 
     // The pushdown recipe reads SQLite through JDBC.
-    "examplesRuntimeOnly"("org.xerial:sqlite-jdbc:3.49.1.0")
+    "examplesRuntimeOnly"("org.xerial:sqlite-jdbc:3.54.1.0")
 
-    testImplementation(platform("org.junit:junit-bom:5.13.4"))
+    testImplementation(platform("org.junit:junit-bom:6.1.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
